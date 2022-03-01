@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+               <form #employeForm="ngForm" (ngSubmit)="addEmploye(employeForm)">
+
+                    <h3 class="text-center my-3">Registra empleados</h3>
+                    <input type="hidden" name="_id" [(ngModel)]="employeService.selectedEmployes._id">
+
+                    <div class="form-group">
+                       <label>Nombres:</label>
+                       <input type="text" 
+                              class="form-control"
+                              name="name" 
+                              placeholder="Ingresa tu nombre"
+                              autocomplete="off"
+                              [(ngModel)]="employeService.selectedEmployes.name">
+                   </div>
+
+                   <div class="form-group my-3">
+                        <label>Posición:</label>
+                       <input type="text" 
+                              class="form-control"
+                              name="position" 
+                              placeholder="Ingresa tu posición"
+                              autocomplete="off"
+                              [(ngModel)]="employeService.selectedEmployes.position">
+                   </div>
+
+                   <div class="form-group">
+                        <label>Oficina:</label>
+                        <input type="text" 
+                               class="form-control"
+                               name="office" 
+                               placeholder="Ingresa tu oficina"
+                               autocomplete="off"
+                               [(ngModel)]="employeService.selectedEmployes.office">
+                    </div>
+
+                    <div class="form-group my-3">
+                        <label>Salario:</label>
+                        <input type="number" 
+                               class="form-control"
+                               name="salary" 
+                               placeholder="Ingresa tu salario"
+                               autocomplete="off"
+                               [(ngModel)]="employeService.selectedEmployes.salary">
+                    </div>
+
+                    <div class="text-center my-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+               </form> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Posición</th>
+                    <th>Salario</th>
+                    <th>Oficina</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employe of employeService.employes">
+                    <td>{{employe.name}}</td>
+                    <td>{{employe.position}}</td>
+                    <td>{{employe.salary | currency}}</td>
+                    <td>{{employe.office}}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" (click)="updateEmployee(employe)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteEmploye(employe._id || '')">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

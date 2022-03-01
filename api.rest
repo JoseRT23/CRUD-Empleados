@@ -1,0 +1,30 @@
+###
+GET http://localhost:5000/employes
+
+###
+POST http://localhost:5000/employes
+Content-Type: application/json
+
+{
+    "name": "Maria Paula",
+    "position": "Jr. developer",
+    "office": "Home office",
+    "salary": "2000000"
+}
+
+###
+GET http://localhost:5000/employes/621c3fa6ea032bc40e8b09d9
+
+###
+DELETE http://localhost:5000/employes/621d6e4798eb582f4f48d71e
+
+###
+PUT http://localhost:5000/employes/621c3fa6ea032bc40e8b09d9
+Content-Type: application/json
+
+{
+    "name": "Maria Paula Engativa",
+    "position": "Jr. developer",
+    "office": "Home office",
+    "salary": "3500000"
+}
